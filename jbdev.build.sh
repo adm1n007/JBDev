@@ -199,6 +199,10 @@ function doPackage() {
 }
 
 echo "........ Start building ........"
+if [ "$PLATFORM_NAME" != "iphoneos" ]; then
+    echo "info: Skip building for non-physical iOS device."
+    exit 0
+fi
 getType || exit -1
 checkEnv || exit -1
 if [ x$UTIL = "xlogos" ]; then
